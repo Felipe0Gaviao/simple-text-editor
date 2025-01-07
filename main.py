@@ -6,7 +6,6 @@ from customtkinter import filedialog
 
 
 class App(ctk.CTk):
-
     default_file_path = Path().home()
 
     def __init__(self):
@@ -29,17 +28,16 @@ class App(ctk.CTk):
 
     def open(self):
         file = filedialog.askopenfile(
-            initialdir=,
+            initialdir=self.default_file_path,
             title="Select a Text File",
             filetypes=[("Text Files", "*.txt")],
         )
 
         if file is not None:
-            try:
+            with open(file.name) as f:
+                self.default_file_path = Path(f.name).parent
                 self.text_window.delete(1.0, "end-1c")
                 self.text_window.insert(1.0, file.read())
-            finally:
-                file.close()
 
 
 if __name__ == "__main__":
