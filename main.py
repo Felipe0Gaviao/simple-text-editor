@@ -62,8 +62,10 @@ class App(ctk.CTk):
                 title="Select where to save the text file",
                 filetypes=[("Text Files", "*.txt")],
             )
-        with open(file.name, "w") as f:
-            f.write(self.text_window.get(1.0, "end"))
+
+        if file is not None:
+            with open(file.name, "w") as f:
+                f.write(self.text_window.get(1.0, "end"))
 
 
 if __name__ == "__main__":
