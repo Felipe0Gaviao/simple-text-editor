@@ -8,3 +8,8 @@ dependencies = ["customtkinter>=5.2.2"]
 [[tool.mypy.overrides]]
 module = ["customtkinter.*"]
 follow_untyped_imports = true
+
+[dependency-groups]
+dev = [
+    "mypy>=1.14.1",
+]
